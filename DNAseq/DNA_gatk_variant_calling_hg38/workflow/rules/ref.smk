@@ -15,9 +15,9 @@ rule get_genome:
 
 checkpoint genome_faidx:
     input:
-        "resources/vep/genome.fasta",
+        "resources/genome.fasta",
     output:
-        "resources/vep/genome.fasta.fai",
+        "resources/genome.fasta.fai",
     log:
         "logs/genome-faidx.log",
     cache: True
