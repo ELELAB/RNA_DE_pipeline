@@ -1,0 +1,4 @@
+sample_name	unit_name	fq1	fq2	sra	adapters	strandedness
+A	lane1	/home/projects/dtu_00011/people/niktom/snakemake/example_data/RNA/20581_000000.T.T02.S2.R1.fq.gz	/home/projects/dtu_00011/people/niktom/snakemake/example_data/RNA/20581_000000.T.T02.S2.R2.fq.gz
+B	lane1	/home/projects/dtu_00011/people/niktom/snakemake/example_data/RNA/20362_000000.T.T02.S2.R1.fq.gz	/home/projects/dtu_00011/people/niktom/snakemake/example_data/RNA/20362_000000.T.T02.S2.R2.fq.gz
+

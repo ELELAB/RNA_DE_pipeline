@@ -1,0 +1,22 @@
+Full Traceback (most recent call last):
+  File "/home/people/niktom/.conda/envs/snakemake/lib/python3.9/site-packages/snakemake/__init__.py", line 599, in snakemake
+    workflow.include(
+  File "/home/people/niktom/.conda/envs/snakemake/lib/python3.9/site-packages/snakemake/workflow.py", line 1155, in include
+    exec(compile(code, snakefile, "exec"), self.globals)
+  File "/home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local/dna-seq-gatk-variant-calling/workflow/Snakefile", line 1, in <module>
+    include: "rules/common.smk"
+  File "/home/people/niktom/.conda/envs/snakemake/lib/python3.9/site-packages/snakemake/workflow.py", line 1155, in include
+    exec(compile(code, snakefile, "exec"), self.globals)
+  File "/home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local/dna-seq-gatk-variant-calling/workflow/rules/common.smk", line 17, in <module>
+  File "/home/people/niktom/.conda/envs/snakemake/lib/python3.9/site-packages/snakemake/workflow.py", line 1212, in configfile
+    c = snakemake.io.load_configfile(fp)
+  File "/home/people/niktom/.conda/envs/snakemake/lib/python3.9/site-packages/snakemake/io.py", line 1603, in load_configfile
+    config = _load_configfile(configpath)
+  File "/home/people/niktom/.conda/envs/snakemake/lib/python3.9/site-packages/snakemake/io.py", line 1568, in _load_configfile
+    obj = open(configpath_or_obj)
+FileNotFoundError: [Errno 2] No such file or directory: 'config/config.yaml'
+
+FileNotFoundError in line 15 of /home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local/dna-seq-gatk-variant-calling/workflow/rules/common.smk:
+[Errno 2] No such file or directory: 'config/config.yaml'
+  File "/home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local/dna-seq-gatk-variant-calling/workflow/Snakefile", line 1, in <module>
+  File "/home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local/dna-seq-gatk-variant-calling/workflow/rules/common.smk", line 15, in <module>

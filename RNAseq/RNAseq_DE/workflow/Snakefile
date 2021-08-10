@@ -1,0 +1,50 @@
+from snakemake.utils import min_version
+
+##### set minimum snakemake version #####
+min_version("5.12.0")
+
+
+##### setup report #####
+configfile: "config/config.yaml"
+
+
+report: "report/workflow.rst"
+
+
+##### setup singularity #####
+
+
+# this container defines the underlying OS for each job when using the workflow
+# with --use-conda --use-singularity
+container: "docker://continuumio/miniconda3"
+
+
+##### load rules #####
+
+
+include: "rules/common.smk"
+include: "rules/ref.smk"
+include: "rules/trim.smk"
+include: "rules/qc.smk"
+include: "rules/align.smk"
+include: "rules/diffexp.smk"
+include: "rules/featurecounts.smk"
+
+##### target rules #####
+
+
+rule all:
+    input:
+        get_final_output(),
+        "results/qc/multiqc_report.html",
+        "results/featurecounts/all.featureCounts",
+        "results/qc/fastqc/A-lane1_fastqc.html",
+#        "results/trimmed/A-lane1_R1.fastq.gz",
+#        "results/pipe/cutadapt/B/lane1.fq1.fastq.gz",
+#        "results/diffexp/contrast.diffexp.tsv",
+#        "results/diffexp/treated-vs-untreated.diffexp.tsv",
+#        "results/counts/all.tsv",
+#        "results/deseq2/all.rds",
+#        "results/qc/multiqc_report.html",
+#        "results/test.txt"
+        "results/pca.svg"

@@ -1,0 +1,3 @@
+sample	unit	platform	fq1	fq2
+A	1	ILLUMINA	/home/projects/dtu_00011/people/niktom/snakemake/example_data/WGS/20362_152294.G.T01.S1.R1.fq.gz	/home/projects/dtu_00011/people/niktom/snakemake/example_data/WGS/20362_152294.G.T01.S1.R2.fq.gz
+B	1	ILLUMINA	/home/projects/dtu_00011/people/niktom/snakemake/example_data/WGS/19538_152232.G.T01.S1.R1.fq.gz	/home/projects/dtu_00011/people/niktom/snakemake/example_data/WGS/19538_152232.G.T01.S1.R2.fq.gz

@@ -1,0 +1,29 @@
+include: "rules/common.smk"
+
+
+##### Target rules #####
+
+
+rule all:
+    input:
+        "results/filtered/all.snvs_recal.vcf.gz",
+        "results/filtered/all.indels_recal.vcf.gz",
+        "results/annotated/all.vcf.gz",
+        "results/qc/multiqc.html",
+        "results/plots/depths.svg",
+        "results/plots/allele-freqs.svg",
+	"results/filtered/all.snvs.recalibrated.vcf.gz",
+#	"results/filtered/all.snvs.recal.vcf",
+        "resources/genome.fasta",
+#        "resources/variation.noiupac.vcf.gz"
+
+##### Modules #####
+
+
+include: "rules/ref.smk"
+include: "rules/mapping.smk"
+include: "rules/calling.smk"
+include: "rules/filtering.smk"
+include: "rules/stats.smk"
+include: "rules/qc.smk"
+include: "rules/annotation.smk"

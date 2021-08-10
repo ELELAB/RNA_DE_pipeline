@@ -1,5 +1,0 @@
-cutadapt piping was not working - that's why I have created links to orig files
-get_cut_adapt function was not working - cutadapt_pe input section is re-defined (get_cut_adapt functions needs to be corrected to be working correctly
-
-- probably just  "pipe/cutadapt/{S}/{U}.{{read}}.fastq{E}" into up-to date destination/format
-- this function should be giving input either to SE or PE cutadapt modes
