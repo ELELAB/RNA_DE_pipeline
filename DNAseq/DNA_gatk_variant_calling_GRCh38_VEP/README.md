@@ -1,4 +1,4 @@
-# Snakemake workflow: DNA gatk variant calling (1.st version of gatk DNA variant calling)
+# Snakemake workflow: DNA gatk variant calling (working version, should be replaced by pipeline using hg38 and funcotator)
 
 This is a modified working version of the "standard" workflow from https://github.com/snakemake-workflows/dna-seq-gatk-variant-calling.
 The majority of the modifications are introduced in order to run VQSR.
