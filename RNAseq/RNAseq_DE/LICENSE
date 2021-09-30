@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2017, Johannes Köster
+The original pipeline has Copyright (c) 2017, Johannes Köster.
+Changes and additions were done by Nikola Tom, (Cancer Systems Biology, DTU), Copyright (c) 2021.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +21,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
-The pipeline is based on the orig pipeline by J. Koster; changes made by Nikola Tom (Cancer Systems Biology, DTU)
