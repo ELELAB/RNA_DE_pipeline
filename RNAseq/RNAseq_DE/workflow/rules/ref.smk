@@ -1,32 +1,35 @@
-rule get_genome:
-    output:
-        "resources/genome.fasta",
-    log:
-        "logs/get-genome.log",
-    params:
-        species=config["ref"]["species"],
-        datatype="dna",
-        build=config["ref"]["build"],
-        release=config["ref"]["release"],
-    cache: True
-    script:
-        "../wrappers/ensembl-sequence_0.59.2/script.py"
+#rule get_genome:
+#    output:
+#        "resources/genome.fasta",
+#    log:
+#        "logs/get-genome.log",
+#    params:
+#        species=config["ref"]["species"],
+#        datatype="dna",
+#        build=config["ref"]["build"],
+#        release=config["ref"]["release"],
+#    cache: True
+#    conda:
+#        "../wrappers/executive_wrappers/reference/ensembl-sequence/environment.yaml"
+#    script:
+#        "../wrappers/executive_wrappers/reference/ensembl-sequence/wrapper.py"
 
-
-rule get_annotation:
-    output:
-        "resources/genome.gtf",
-    params:
-        species=config["ref"]["species"],
-        fmt="gtf",
-        build=config["ref"]["build"],
-        release=config["ref"]["release"],
-        flavor="",
-    cache: True
-    log:
-        "logs/get_annotation.log",
-    script:
-        "../wrappers/ensembl-annotation_0.59.2/script.py"
+#rule get_annotation:
+#    output:
+#        "resources/genome.gtf",
+#    params:
+#        species=config["ref"]["species"],
+#        fmt="gtf",
+#        build=config["ref"]["build"],
+#        release=config["ref"]["release"],
+#        flavor="",
+#    cache: True
+#    log:
+#        "logs/get_annotation.log",
+#    conda:
+#        "../wrappers/executive_wrappers/reference/ensembl-annotation/environment.yaml"
+#    script:
+#        "../wrappers/executive_wrappers/reference/ensembl-annotation/wrapper.py"
 
 
 rule genome_faidx:
@@ -38,9 +41,9 @@ rule genome_faidx:
         "logs/genome-faidx.log",
     cache: True
     conda:
-        "../wrappers/genome_faidx_0.59.2/env.yaml"
+        "../wrappers/executive_wrappers/samtools/index/environment.yaml"
     script:
-        "../wrappers/genome_faidx_0.59.2/script.py"
+        "../wrappers/executive_wrappers/samtools/index/wrapper.py"
 
 
 rule bwa_index:
@@ -54,9 +57,9 @@ rule bwa_index:
         mem_mb=369000,
     cache: True
     conda:
-        "../wrappers/bwa_index_0.59.2/env.yaml"
+        "../wrappers/executive_wrappers/bwa/index/environment.yaml"
     script:
-        "../wrappers/bwa_index_0.59.2/script.py"
+        "../wrappers/executive_wrappers/bwa/index/wrapper.py"
 
 
 rule star_index:
@@ -67,11 +70,11 @@ rule star_index:
         directory("resources/star_genome"),
     threads: 4
     params:
-        extra="--sjdbGTFfile resources/genome.gtf --sjdbOverhang 100",
+        extra="--sjdbGTFfile resources/genome.gtf --sjdbOverhang 149",
     log:
         "logs/star_index_genome.log",
     cache: True
     conda:
-        "../wrappers/star_index_0.64.0/env.yaml"
+        "../wrappers/executive_wrappers/star/index/environment.yaml"
     script:
-        "../wrappers/star_index_0.64.0/script.py"
+        "../wrappers/executive_wrappers/star/index/wrapper.py"

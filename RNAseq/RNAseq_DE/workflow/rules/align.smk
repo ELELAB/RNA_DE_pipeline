@@ -10,14 +10,14 @@ rule align_pe:
         "logs/star-pe/{sample}-{unit}.log",
     params:
         index=lambda wc, input: input.index,
-        extra="--outSAMtype BAM Unsorted --quantMode GeneCounts --sjdbGTFfile {} {}".format(
+        extra="--sjdbGTFfile {} {}".format(
             "resources/genome.gtf", config["params"]["star"]
         ),
     threads: 24
     conda:
-        "../wrappers/star_0.64.0/env.yaml"
+        "../wrappers/executive_wrappers/star/align/environment.yaml"
     script:
-        "../wrappers/star_0.64.0/script.py"
+        "../wrappers/executive_wrappers/star/align/wrapper.py"
 
 
 rule align_se:
@@ -36,6 +36,6 @@ rule align_se:
         ),
     threads: 24
     conda:
-        "../wrappers/star_0.64.0/env.yaml"
+        "../wrappers/executive_wrappers/star/align/environment.yaml"
     script:
-        "../wrappers/star_0.64.0/script.py"
+        "../wrappers/executive_wrappers/star/align/wrapper.py"

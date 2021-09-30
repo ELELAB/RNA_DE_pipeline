@@ -235,7 +235,7 @@ def get_fastqc_input(wildcards):
     else:
         # paired end local sample
         return expand(
-            "results/fastqc_input/{S}-{U}.{{read}}.fastq{E}".format(
+            "results/fastqc_input/{S}-{U}-{{read}}.fastq{E}".format(
                 S=unit.sample_name, U=unit.unit_name, E=ending
             ),
             read=["fq1", "fq2"],
