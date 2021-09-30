@@ -1,0 +1,8 @@
+Workflow defines that rule genome_faidx is eligible for caching between workflows (use the --cache argument to enable this).
+Workflow defines that rule bwa_index is eligible for caching between workflows (use the --cache argument to enable this).
+Workflow defines that rule star_index is eligible for caching between workflows (use the --cache argument to enable this).
+Building DAG of jobs...
+MissingInputException in line 65 of /home/projects/dtu_00011/people/niktom/snakemake/rna_hg38_altered_settings/workflow/rules/ref.smk:
+Missing input files for rule star_index:
+resources/genome.fasta
+resources/genome.gtf
