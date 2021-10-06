@@ -12,16 +12,16 @@ rule fastqc_input:
     shell:
         "ln -s {input} {output} 2> {log}"
 
-###add {fq}
+
 rule fastqc_qc:
     input:
-        get_fastqc_input,
+        "results/fastqc_input/{sample}-{unit}-{fq}.fastq.gz",
     output:
         html="results/qc/fastqc/{sample}-{unit}-{fq}_fastqc.html",
         zip="results/qc/fastqc/{sample}-{unit}-{fq}_fastqc.zip",
     priority: 1
     log:
-        "logs/fastqc/{sample}-{unit}{fq}.log",
+        "logs/fastqc/{sample}-{unit}-{fq}.log",
     params:
         "",
     conda:
@@ -187,10 +187,10 @@ rule multiqc:
             "results/qc/fastqc/{unit.sample_name}-{unit.unit_name}-fq2_fastqc.zip",
             unit=units.itertuples(),  
         ),
-#        expand(
-#            "results/trimmed/{unit.sample_name}-{unit.unit_name}_paired.qc.txt",
-#            unit=units.itertuples(),
-#	), 
+        expand(
+            "results/trimmed/{unit.sample_name}-{unit.unit_name}_paired.qc.txt",
+            unit=units.itertuples(),
+	), 
         expand(
             "results/qc/rseqc/{unit.sample_name}-{unit.unit_name}.junctionanno.junction.bed",
             unit=units.itertuples(),
@@ -235,4 +235,3 @@ rule multiqc:
         "../wrappers/executive_wrappers/multiqc/environment.yaml"
     script:
         "../wrappers/executive_wrappers/multiqc/wrapper.py"
-
