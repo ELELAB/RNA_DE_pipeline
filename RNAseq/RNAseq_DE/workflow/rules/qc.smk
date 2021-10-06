@@ -187,10 +187,10 @@ rule multiqc:
             "results/qc/fastqc/{unit.sample_name}-{unit.unit_name}-fq2_fastqc.zip",
             unit=units.itertuples(),  
         ),
-        expand(
-            "results/trimmed/{unit.sample_name}-{unit.unit_name}_paired.qc.txt",
-            unit=units.itertuples(),
-	), 
+    #     expand(
+    #         "results/trimmed/{unit.sample_name}-{unit.unit_name}_paired.qc.txt",
+    #         unit=units.itertuples(),
+	# ), 
         expand(
             "results/qc/rseqc/{unit.sample_name}-{unit.unit_name}.junctionanno.junction.bed",
             unit=units.itertuples(),
