@@ -2,7 +2,6 @@ Required resources:
 1) genome.fasta
 2) genome.gtf
 For RNA seq, primary assembly should be used (without alt contigs, HLA, etc.)
-In our case we create symbolic links to the original files.
 
 note: Resources were downloaded using 01_download_resources.sh
 

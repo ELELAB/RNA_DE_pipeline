@@ -69,12 +69,6 @@ def get_cutadapt_pipe_input(wildcards):
     return files
     print(files)
 
-#def get_cutadapt_pipe_input(wildcards):
-#    files = list(
-#        sorted(glob.glob(units.loc[wildcards.sample].loc[wildcards.unit.fastq.gz]))
-#    )
-#    assert len(files) > 0
-#    return files
 
 
 def is_paired_end(sample):
