@@ -12,16 +12,16 @@ rule fastqc_input:
     shell:
         "ln -s {input} {output} 2> {log}"
 
-###add {fq}
+
 rule fastqc_qc:
     input:
-        get_fastqc_input,
+        "results/fastqc_input/{sample}-{unit}-{fq}.fastq.gz",
     output:
         html="results/qc/fastqc/{sample}-{unit}-{fq}_fastqc.html",
         zip="results/qc/fastqc/{sample}-{unit}-{fq}_fastqc.zip",
     priority: 1
     log:
-        "logs/fastqc/{sample}-{unit}{fq}.log",
+        "logs/fastqc/{sample}-{unit}-{fq}.log",
     params:
         "",
     conda:

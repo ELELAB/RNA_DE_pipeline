@@ -1,7 +1,7 @@
 rule feature_counts:
     input:
         sam=sorted(set(expand("results/star/pe/{sample}-{unit}/Aligned.out.bam",sample=units.sample_name, unit=units.unit_name))),
-        annotation="resources/genome_noAlt.gtf",
+        annotation="resources/genome.gtf",
         # optional input
         # chr_names="",          # implicitly sets the -A flag
         fasta="resources/genome.fasta" # implicitly sets the -G flag,

@@ -1,37 +1,3 @@
-#rule get_genome:
-#    output:
-#        "resources/genome.fasta",
-#    log:
-#        "logs/get-genome.log",
-#    params:
-#        species=config["ref"]["species"],
-#        datatype="dna",
-#        build=config["ref"]["build"],
-#        release=config["ref"]["release"],
-#    cache: True
-#    conda:
-#        "../wrappers/executive_wrappers/reference/ensembl-sequence/environment.yaml"
-#    script:
-#        "../wrappers/executive_wrappers/reference/ensembl-sequence/wrapper.py"
-
-#rule get_annotation:
-#    output:
-#        "resources/genome.gtf",
-#    params:
-#        species=config["ref"]["species"],
-#        fmt="gtf",
-#        build=config["ref"]["build"],
-#        release=config["ref"]["release"],
-#        flavor="",
-#    cache: True
-#    log:
-#        "logs/get_annotation.log",
-#    conda:
-#        "../wrappers/executive_wrappers/reference/ensembl-annotation/environment.yaml"
-#    script:
-#        "../wrappers/executive_wrappers/reference/ensembl-annotation/wrapper.py"
-
-
 rule genome_faidx:
     input:
         "resources/genome.fasta",
