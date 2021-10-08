@@ -1,6 +1,6 @@
 #!/bin/bash
 
-###The following lines create local condo installation of the gsutils package which is needed to download reference resources.
+###The following lines create local conda installation of the gsutils package which is needed to download reference resources.
 
 #conda init --all
 #conda create --name gs_utils
