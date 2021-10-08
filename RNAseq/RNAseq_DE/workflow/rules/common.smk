@@ -67,7 +67,6 @@ def get_cutadapt_pipe_input(wildcards):
     )
     assert len(files) > 0
     return files
-    print(files)
 
 
 
