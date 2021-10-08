@@ -12,18 +12,18 @@
 ### Number of nodes
 #PBS -l nodes=1:ppn=30
 ### Memory
-#PBS -l mem=120gb
+#PBS -l mem=150gb
 ### Requesting time - format is <days>:<hours>:<minutes>:<seconds> (here, 12 hours)
 #PBS -l walltime=50:00:00
 
 # Go to the directory from where the job was submitted (initial directory is $HOME)
-MY_dir=/home/projects/dtu_00011/people/niktom/snakemake/test_RNAseq/RNAseq/rna_test
+MY_dir=/home/projects/dtu_00011/people/niktom/snakemake/rna_hg38_altered_settings
 echo Working directory is $MY_dir
 cd $MY_dir
 
 ### Here follows the user commands:
 # Define number of processors
-NPROCS=10
+NPROCS=30
 echo This job has allocated $NPROCS nodes
 
 # Load all required modules for the job
@@ -37,4 +37,4 @@ conda activate /home/people/niktom/.conda/envs/snakemake/
 # Make sure that this script is not bigger than 64kb ~ 150 lines, otherwise put in seperat script and execute from here
 #export SNAKEMAKE_OUTPUT_CACHE=/home/people/niktom/nik_projects/snakemake/test_RNAseq/rna-seq-star-deseq2/resources
 #snakemake --cores 30 --use-conda --cache get_genome get_annotation genome_faidx bwa_index star_index star_genome
-snakemake --cores 30 --use-conda
+snakemake --cores 30 --use-conda --keep-going

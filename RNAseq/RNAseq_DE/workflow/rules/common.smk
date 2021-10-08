@@ -67,14 +67,7 @@ def get_cutadapt_pipe_input(wildcards):
     )
     assert len(files) > 0
     return files
-    print(files)
 
-#def get_cutadapt_pipe_input(wildcards):
-#    files = list(
-#        sorted(glob.glob(units.loc[wildcards.sample].loc[wildcards.unit.fastq.gz]))
-#    )
-#    assert len(files) > 0
-#    return files
 
 
 def is_paired_end(sample):
@@ -213,30 +206,3 @@ def prepare_fastqc_input(wildcards):
     return files
     print(files)
 
-
-def get_fastqc_input(wildcards):
-    unit = units.loc[wildcards.sample].loc[wildcards.unit]
-
-    if pd.isna(unit["fq1"]):
-        # SRA sample (always paired-end for now)
-        accession = unit["sra"]
-        return expand("sra/{accession}_{read}.fastq", accession=accession, read=[1, 2])
-
-    if unit["fq1"].endswith("gz"):
-        ending = ".gz"
-    else:
-        ending = ""
-
-    if pd.isna(unit["fq2"]):
-        # single end local sample
-        return "results/fastqc_input/{S}-{U}.fq1.fastq{E}".format(
-            S=unit.sample_name, U=unit.unit_name, E=ending
-        )
-    else:
-        # paired end local sample
-        return expand(
-            "results/fastqc_input/{S}-{U}.{{read}}.fastq{E}".format(
-                S=unit.sample_name, U=unit.unit_name, E=ending
-            ),
-            read=["fq1", "fq2"],
-        )

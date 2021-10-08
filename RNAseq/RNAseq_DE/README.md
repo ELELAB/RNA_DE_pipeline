@@ -15,4 +15,3 @@ Report.html file offers an interactive workflow diagram in the form of Direct Ac
 The usage of this workflow is described in the [Snakemake Workflow Catalog](https://snakemake.github.io/snakemake-workflow-catalog/?usage=snakemake-workflows%2Frna-seq-star-deseq2). As our code is a modified version, please, skip Step 2 (deploy workflow) and download the code from this github pages.
 
 
-

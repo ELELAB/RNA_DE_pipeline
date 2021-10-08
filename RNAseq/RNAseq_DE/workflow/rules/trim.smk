@@ -5,9 +5,9 @@ rule get_sra:
     log:
         "logs/get-sra/{accession}.log",
     conda:
-        "../wrappers/fasterq-dump_0.56.0/env.yaml"
+        "../wrappers/executive_wrappers/sra-tools/fasterq-dump/environment.yaml"
     script:
-        "../wrappers/fasterq-dump_0.56.0/script.py"
+        "../wrappers/executive_wrappers/sra-tools/fasterq-dump/wrapper.py"
 
 
 rule cutadapt_pipe:
@@ -41,9 +41,9 @@ rule cutadapt_pe:
 #        adapters="-a AGAGCACACGTCTGAACTCCAGTCAC -g AGATCGGAAGAGCACACGT -A AGAGCACACGTCTGAACTCCAGTCAC -G AGATCGGAAGAGCACACGT"
     threads: 8
     conda:
-        "../wrappers/cutadapt_0.75.0/env.yaml"
+        "../wrappers/executive_wrappers/cutadapt/pe/environment.yaml"
     script:
-        "../wrappers/cutadapt_0.75.0/script.py"
+        "../wrappers/executive_wrappers/cutadapt/pe/wrapper.py"
 
 
 rule cutadapt_se:
@@ -59,9 +59,9 @@ rule cutadapt_se:
         adapters_r1=lambda w: str(units.loc[w.sample].loc[w.unit, "adapters"]),
     threads: 8
     conda:
-        "../wrappers/cutadapt_0.75.0/env.yaml"
+        "../wrappers/executive_wrappers/cutadapt/se/environment.yaml"
     script:
-        "../wrappers/cutadapt_0.75.0/script.py"
+        "../wrappers/executive_wrappers/cutadapt/se/wrapper.py"
 
 
 rule merge_fastqs:

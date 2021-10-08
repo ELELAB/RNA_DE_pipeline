@@ -3,9 +3,9 @@ rule fastqc_input:
     input:
         prepare_fastqc_input,
     output:
-        "results/fastqc_input/{sample}-{unit}.{fq}.{ext}",
+        "results/fastqc_input/{sample}-{unit}-{fq}.{ext}",
     log:
-        "logs/fastqc_input/{sample}-{unit}.{fq}.{ext}.log",
+        "logs/fastqc_input/{sample}-{unit}-{fq}.{ext}.log",
     wildcard_constraints:
         ext=r"fastq|fastq\.gz",
     threads: 0
@@ -15,19 +15,19 @@ rule fastqc_input:
 
 rule fastqc_qc:
     input:
-        get_fastqc_input,
+        "results/fastqc_input/{sample}-{unit}-{fq}.fastq.gz",
     output:
-        html="results/qc/fastqc/{sample}-{unit}_fastqc.html",
-        zip="results/qc/fastqc/{sample}-{unit}_fastqc.zip",
+        html="results/qc/fastqc/{sample}-{unit}-{fq}_fastqc.html",
+        zip="results/qc/fastqc/{sample}-{unit}-{fq}_fastqc.zip",
     priority: 1
     log:
-        "logs/fastqc/{sample}-{unit}.log",
+        "logs/fastqc/{sample}-{unit}-{fq}.log",
     params:
         "",
     conda:
-        "../wrappers/fastqc_0.77.0/env.yaml"
+        "../wrappers/executive_wrappers/fastqc/environment.yaml"
     script:
-        "../wrappers/fastqc_0.77.0/script.py"
+        "../wrappers/executive_wrappers/fastqc/wrapper.py"
 
 
 rule rseqc_gtf2bed:
@@ -180,7 +180,11 @@ rule multiqc:
     input:
         lambda wc: get_star_output_all_units(wc, fi="bam"),
         expand(
-            "results/qc/fastqc/{unit.sample_name}-{unit.unit_name}_fastqc.zip",
+            "results/qc/fastqc/{unit.sample_name}-{unit.unit_name}-fq1_fastqc.zip",
+            unit=units.itertuples(),  
+        ),
+        expand(
+            "results/qc/fastqc/{unit.sample_name}-{unit.unit_name}-fq2_fastqc.zip",
             unit=units.itertuples(),  
         ),
 #        expand(
@@ -228,6 +232,7 @@ rule multiqc:
     log:
         "logs/multiqc.log",
     conda:
-        "../wrappers/multiqc_0.75.0/env.yaml"
+        "../wrappers/executive_wrappers/multiqc/environment.yaml"
     script:
-        "../wrappers/multiqc_0.75.0/script.py"
+        "../wrappers/executive_wrappers/multiqc/wrapper.py"
+

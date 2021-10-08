@@ -16,10 +16,12 @@ rule feature_counts:
     params:
         tmp_dir="",   # implicitly sets the --tmpDir flag
         r_path="",    # implicitly sets the --Rpath flag
-        extra="-O --fracOverlap 0.2"
+        extra="-p -t exon -g gene_id"
     log:
         "logs/featurecounts/B.log"
-    conda: "../wrappers/featurecounts_0.v75.0/env.yaml"
+
+    conda:
+        "../wrappers/executive_wrappers/subread/featurecounts/environment.yaml"
     script:
-        "../wrappers/featurecounts_0.v75.0/script.py"
+        "../wrappers/executive_wrappers/subread/featurecounts/wrapper.py"
 

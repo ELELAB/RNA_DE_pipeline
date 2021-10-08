@@ -7,10 +7,10 @@ units: config/units.tsv
 
 
 ref:
-  # Ensembl species name
+  #Ensembl species name
   species: homo_sapiens
   # Ensembl release (make sure to take one where snpeff data is available, check 'snpEff databases' output)
-  release: 100
+  release: 104
   # Genome build
   build: GRCh38
 
@@ -38,4 +38,4 @@ params:
   cutadapt-pe: 
     "--minimum-length 35 -a AGAGCACACGTCTGAACTCCAGTCAC -g AGATCGGAAGAGCACACGT -A AGAGCACACGTCTGAACTCCAGTCAC -G AGATCGGAAGAGCACACGT"
   cutadapt-se: ""
-  star: ""
+  star: "--twopassMode Basic --twopass1readsN -1 --sjdbOverhang 149 --sjdbGTFtagExonParentGene gene_name --outSAMtype BAM Unsorted --quantMode GeneCounts --outFilterMultimapNmax 200"
