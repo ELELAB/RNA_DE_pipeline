@@ -17,7 +17,7 @@ samples = (
 
 def get_final_output():
     final_output = expand(
-        "../../../../results/diffexp/{contrast}.diffexp.tsv",
+        "results/diffexp/{contrast}.diffexp.tsv",
         contrast=config["diffexp"]["contrasts"],
     )
     return final_output
@@ -48,13 +48,13 @@ def get_cutadapt_input(wildcards):
 
     if pd.isna(unit["fq2"]):
         # single end local sample
-        return "../../../../results/pipe/cutadapt/{S}/{U}.fq1.fastq{E}".format(
+        return "results/pipe/cutadapt/{S}/{U}.fq1.fastq{E}".format(
             S=unit.sample_name, U=unit.unit_name, E=ending
         )
     else:
         # paired end local sample
         return expand(
-            "../../../../results/pipe/cutadapt/{S}/{U}.{{read}}.fastq{E}".format(
+            "results/pipe/cutadapt/{S}/{U}.{{read}}.fastq{E}".format(
                 S=unit.sample_name, U=unit.unit_name, E=ending
             ),
             read=["fq1", "fq2"],
@@ -89,7 +89,7 @@ def get_map_reads_input_R1(wildcards):
     if not is_activated("mergeReads"):
         if config["trimming"]["activate"]:
             return expand(
-                "../../../../results/trimmed/{sample}_{unit}_R1.fastq.gz",
+                "results/trimmed/{sample}_{unit}_R1.fastq.gz",
                 unit=units.loc[wildcards.sample, "unit_name"],
                 sample=wildcards.sample,
             )
@@ -101,8 +101,8 @@ def get_map_reads_input_R1(wildcards):
         sample_units = units.loc[wildcards.sample]
         return sample_units["fq1"]
     if is_paired_end(wildcards.sample):
-        return "../../../../results/merged/{sample}_R1.fastq.gz"
-    return "../../../../results/merged/{sample}_single.fastq.gz"
+        return "results/merged/{sample}_R1.fastq.gz"
+    return "results/merged/{sample}_single.fastq.gz"
 
 
 def get_map_reads_input_R2(wildcards):
@@ -110,7 +110,7 @@ def get_map_reads_input_R2(wildcards):
         if not is_activated("mergeReads"):
             if config["trimming"]["activate"]:
                 return expand(
-                    "../../../../results/trimmed/{sample}_{unit}_R2.fastq.gz",
+                    "results/trimmed/{sample}_{unit}_R2.fastq.gz",
                     unit=units.loc[wildcards.sample, "unit_name"],
                     sample=wildcards.sample,
                 )
@@ -121,7 +121,7 @@ def get_map_reads_input_R2(wildcards):
                 return expand("sra/{accession}_R2.fastq", accession=accession)
             sample_units = units.loc[wildcards.sample]
             return sample_units["fq2"]
-        return ("../../../../results/merged/{sample}_R2.fastq.gz",)
+        return ("results/merged/{sample}_R2.fastq.gz",)
     return ""
 
 
@@ -137,7 +137,7 @@ def get_star_output_all_units(wildcards, fi="counts"):
         else:
             lib = "se"
         res.append(
-            "../../../../results/star/{}/{}-{}/{}".format(
+            "results/star/{}/{}-{}/{}".format(
                 lib, unit.sample_name, unit.unit_name, outfile
             )
         )
@@ -149,7 +149,7 @@ def get_star_bam(wildcards):
         lib = "pe"
     else:
         lib = "se"
-    return "../../../../results/star/{}/{}-{}/Aligned.out.bam".format(
+    return "results/star/{}/{}-{}/Aligned.out.bam".format(
         lib, wildcards.sample, wildcards.unit
     )
 
@@ -178,7 +178,7 @@ def is_activated(xpath):
 def get_fastqs(wc):
     if config["trimming"]["activate"]:
         return expand(
-            "../../../../results/trimmed/{sample}/{unit}_{read}.fastq.gz",
+            "results/trimmed/{sample}/{unit}_{read}.fastq.gz",
             unit=units.loc[wc.sample, "unit_name"],
             sample=wc.sample,
             read=wc.read,

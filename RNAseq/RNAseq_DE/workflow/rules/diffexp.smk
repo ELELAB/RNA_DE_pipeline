@@ -2,7 +2,7 @@ rule count_matrix:
     input:
         get_star_output_all_units,
     output:
-        "../../../../results/counts/all.tsv",
+        "results/counts/all.tsv",
     log:
         "logs/count-matrix.log",
     params:
@@ -16,10 +16,10 @@ rule count_matrix:
 
 rule deseq2_init:
     input:
-        counts="../../../../results/counts/all.tsv",
+        counts="results/counts/all.tsv",
     output:
-        "../../../../results/deseq2/all.rds",
-        "../../../../results/deseq2/normcounts.tsv",
+        "results/deseq2/all.rds",
+        "results/deseq2/normcounts.tsv",
     params:
         samples=config["samples"],
         model=config["diffexp"]["model"],
@@ -34,9 +34,9 @@ rule deseq2_init:
 
 rule pca:
     input:
-        "../../../../results/deseq2/all.rds",
+        "results/deseq2/all.rds",
     output:
-        report("../../../../results/pca.svg", "../report/pca.rst"),
+        report("results/pca.svg", "../report/pca.rst"),
     params:
         pca_labels=config["pca"]["labels"],
     conda:
@@ -49,12 +49,12 @@ rule pca:
 
 rule deseq2:
     input:
-        "../../../../results/deseq2/all.rds",
+        "results/deseq2/all.rds",
     output:
         table=report(
-            "../../../../results/diffexp/{contrast}.diffexp.tsv", "../report/diffexp.rst"
+            "results/diffexp/{contrast}.diffexp.tsv", "../report/diffexp.rst"
         ),
-        ma_plot=report("../../../../results/diffexp/{contrast}.ma-plot.svg", "../report/ma.rst"),
+        ma_plot=report("results/diffexp/{contrast}.ma-plot.svg", "../report/ma.rst"),
     params:
         contrast=get_contrast, 
     conda:

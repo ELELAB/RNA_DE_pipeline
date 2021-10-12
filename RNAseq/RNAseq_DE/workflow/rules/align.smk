@@ -4,8 +4,8 @@ rule align_pe:
         fq2=get_map_reads_input_R2,
         index="resources/star_genome",
     output:
-        "../../../../results/star/pe/{sample}-{unit}/Aligned.out.bam",
-        "../../../../results/star/pe/{sample}-{unit}/ReadsPerGene.out.tab",
+        "results/star/pe/{sample}-{unit}/Aligned.out.bam",
+        "results/star/pe/{sample}-{unit}/ReadsPerGene.out.tab",
     log:
         "logs/star-pe/{sample}-{unit}.log",
     params:
@@ -25,8 +25,8 @@ rule align_se:
         fq1=get_map_reads_input_R1,
         index="resources/star_genome",
     output:
-        "../../../../results/star/se/{sample}-{unit}/Aligned.out.bam",
-        "../../../../results/star/se/{sample}-{unit}/ReadsPerGene.out.tab",
+        "results/star/se/{sample}-{unit}/Aligned.out.bam",
+        "results/star/se/{sample}-{unit}/ReadsPerGene.out.tab",
     log:
         "logs/star-se/{sample}-{unit}.log",
     params:
