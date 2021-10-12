@@ -14,7 +14,7 @@ rule cutadapt_pipe:
     input:
         get_cutadapt_pipe_input,
     output:
-        "results/pipe/cutadapt/{sample}/{unit}.{fq}.{ext}",
+        "../../../../results/pipe/cutadapt/{sample}/{unit}.{fq}.{ext}",
     log:
         "logs/pipe-fastqs/catadapt/{sample}-{unit}.{fq}.{ext}.log",
     wildcard_constraints:
@@ -27,11 +27,11 @@ rule cutadapt_pipe:
 rule cutadapt_pe:
     input:
         get_cutadapt_input,
-#        ["results/pipe/cutadapt/{sample}/{unit}.fq1.fastq.gz", "results/pipe/cutadapt/{sample}/{unit}.fq2.fastq.gz"]
+#        ["../../../../results/pipe/cutadapt/{sample}/{unit}.fq1.fastq.gz", "../../../../results/pipe/cutadapt/{sample}/{unit}.fq2.fastq.gz"]
     output:
-        fastq1="results/trimmed/{sample}_{unit}_R1.fastq.gz",
-        fastq2="results/trimmed/{sample}_{unit}_R2.fastq.gz",
-        qc="results/trimmed/{sample}-{unit}_paired.qc.txt",
+        fastq1="../../../../results/trimmed/{sample}_{unit}_R1.fastq.gz",
+        fastq2="../../../../results/trimmed/{sample}_{unit}_R2.fastq.gz",
+        qc="../../../../results/trimmed/{sample}-{unit}_paired.qc.txt",
     log:
         "logs/cutadapt/{sample}_{unit}.log",
     params:
@@ -50,8 +50,8 @@ rule cutadapt_se:
     input:
         get_cutadapt_input,
     output:
-        fastq="results/trimmed/{sample}-{unit}_single.fastq.gz",
-        qc="results/trimmed/{sample}-{unit}_single.qc.txt",
+        fastq="../../../../results/trimmed/{sample}-{unit}_single.fastq.gz",
+        qc="../../../../results/trimmed/{sample}-{unit}_single.qc.txt",
     log:
         "logs/cutadapt/{sample}-{unit}.log",
     params:
@@ -68,7 +68,7 @@ rule merge_fastqs:
     input:
         get_fastqs,
     output:
-        "results/merged/{sample}_{read}.fastq.gz",
+        "../../../../results/merged/{sample}_{read}.fastq.gz",
     log:
         "logs/merge-fastqs/{sample}_{read}.log",
     wildcard_constraints:
