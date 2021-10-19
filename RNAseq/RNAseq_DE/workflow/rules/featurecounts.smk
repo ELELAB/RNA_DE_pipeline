@@ -12,7 +12,7 @@ rule feature_counts:
         "../../../../results/featurecounts/all.featureCounts.jcounts", 
 
     threads:
-        10
+        19
     params:
         tmp_dir="",   # implicitly sets the --tmpDir flag
         r_path="",    # implicitly sets the --Rpath flag

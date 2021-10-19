@@ -13,7 +13,7 @@ rule align_pe:
         extra="--sjdbGTFfile {} {}".format(
             "resources/genome.gtf", config["params"]["star"]
         ),
-    threads: 24
+    threads: 19
     conda:
         "../wrappers/executive_wrappers/star/align/environment.yaml"
     script:
@@ -34,7 +34,7 @@ rule align_se:
         extra="--quantMode GeneCounts --sjdbGTFfile {} {}".format(
             "resources/genome.gtf", config["params"]["star"]
         ),
-    threads: 24
+    threads: 19
     conda:
         "../wrappers/executive_wrappers/star/align/environment.yaml"
     script:
