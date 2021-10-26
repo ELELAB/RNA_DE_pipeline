@@ -1,4 +1,79 @@
-## FASTQC and RSEQC
+rule picard_collect_multiple_metrics:
+    input:
+        bam=get_star_bam,
+        ref="resources/genome.fasta",
+    output:
+        # Through the output file extensions the different tools for the metrics can be selected
+        # so that it is not necessary to specify them under params with the "PROGRAM" option.
+        # Usable extensions (and which tools they implicitly call) are listed here:
+        #         https://snakemake-wrappers.readthedocs.io/en/stable/wrappers/picard/collectmultiplemetrics.html.
+        multiext("../../../../qc/picard_multiple_metrics/{sample}-{unit}",
+                 ".alignment_summary_metrics",
+                 ".insert_size_metrics",
+                 ".quality_distribution_metrics",
+                 ".quality_by_cycle_metrics",
+                 ".base_distribution_by_cycle_metrics",
+                 ".gc_bias.detail_metrics",
+                 ".quality_yield_metrics",
+                 )
+    resources:
+        mem_gb=30
+    log:
+        "logs/picard/multiple-metrics/{sample}-{unit}.log"
+    params:
+        # optional parameters
+        "VALIDATION_STRINGENCY=LENIENT "
+#        "METRIC_ACCUMULATION_LEVEL=null "
+#        "METRIC_ACCUMULATION_LEVEL=SAMPLE "
+    conda:
+        "../wrappers/executive_wrappers/picard/collectmultiplemetrics/environment.yaml"
+    script:
+        "../wrappers/executive_wrappers/picard/collectmultiplemetrics/wrapper.py"
+
+
+rule picard_collect_rnaseq_metrics:
+    input:
+        bam=get_star_bam,
+        refflat="resources/genome.refFlat.txt",
+        rib_intervals="resources/gencode.v38.annotation_rRNA.interval_list"
+    output:
+        "../../../../qc/picard_rnaseq_metrics/{sample}-{unit}.rnaseq_metrics.txt"
+    params:
+        # strand is optional (defaults to NONE) and pertains to the library preparation
+        # options are FIRST_READ_TRANSCRIPTION_STRAND, SECOND_READ_TRANSCRIPTION_STRAND, and NONE
+        strand="SECOND_READ_TRANSCRIPTION_STRAND",
+        # optional additional parameters, for example,
+        extra="VALIDATION_STRINGENCY=STRICT"
+    log:
+        "logs/picard/rnaseq-metrics/{sample}-{unit}.log"
+    resources:
+        mem_mb=10024
+    conda:
+        "../wrappers/executive_wrappers/picard/collectrnaseqmetrics/environment.yaml"
+    script:
+        "../wrappers/executive_wrappers/picard/collectrnaseqmetrics/wrapper_nik.py"
+
+
+rule picard_collect_hs_metrics:
+    input:
+        bam=get_star_bam,
+        reference="resources/genome.fasta",
+        bait_intervals="resources/GRCh38_refseq_cds.interval_list",
+        target_intervals="resources/GRCh38_refseq_cds.interval_list"
+    output:
+        "../../../../qc/picard_hs_metrics/{sample}-{unit}.hs_metrics.txt"
+    params:
+        extra="SAMPLE_SIZE=10000"
+    log:
+        "logs/picard/hs-metrics/{sample}-{unit}.log"
+    resources:
+        mem_mb=10024
+    conda:
+        "../wrappers/executive_wrappers/picard/collecthsmetrics/environment.yaml"
+    script:
+        "../wrappers/executive_wrappers/picard/collecthsmetrics/wrapper.py"
+
+
 rule fastqc_input:
     input:
         prepare_fastqc_input,
@@ -227,6 +302,40 @@ rule multiqc:
             "logs/rseqc/rseqc_junction_annotation/{unit.sample_name}-{unit.unit_name}.log",
             unit=units.itertuples(),
         ),
+        expand(
+            "../../../../qc/picard_rnaseq_metrics/{unit.sample_name}-{unit.unit_name}.rnaseq_metrics.txt",
+            unit=units.itertuples(),
+        ),
+        expand(
+            "../../../../qc/picard_hs_metrics/{unit.sample_name}-{unit.unit_name}.hs_metrics.txt",
+            unit=units.itertuples(),
+        ),
+        expand(
+            "../../../../qc/picard_multiple_metrics/{unit.sample_name}-{unit.unit_name}.insert_size_metrics",
+            unit=units.itertuples(),
+        ),
+        expand(
+            "../../../../qc/picard_multiple_metrics/{unit.sample_name}-{unit.unit_name}.quality_distribution_metrics",
+            unit=units.itertuples(),
+        ),
+
+        expand(
+            "../../../../qc/picard_multiple_metrics/{unit.sample_name}-{unit.unit_name}.quality_by_cycle_metrics",
+            unit=units.itertuples(),
+        ),
+        expand(
+            "../../../../qc/picard_multiple_metrics/{unit.sample_name}-{unit.unit_name}.base_distribution_by_cycle_metrics",
+            unit=units.itertuples(),
+        ),
+        expand(
+            "../../../../qc/picard_multiple_metrics/{unit.sample_name}-{unit.unit_name}.quality_yield_metrics",
+            unit=units.itertuples(),
+        ),
+        expand(
+            "../../../../qc/picard_multiple_metrics/{unit.sample_name}-{unit.unit_name}.gc_bias.detail_metrics",
+            unit=units.itertuples(),
+        ),
+
     output:
         "../../../../qc/multiqc_report.html",
     log:

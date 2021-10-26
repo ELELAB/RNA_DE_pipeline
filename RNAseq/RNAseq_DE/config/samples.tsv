@@ -1,11 +1,5 @@
 sample_name	condition
-A	untreated
-B	untreated
-C	untreated
-D	untreated
-E	untreated
-F	treated
-G	treated
-H	treated
-I	treated
-J	treated
+21767_000000.T.T02.S2	Pre-B
+21824_000000.T.T02.S2	T
+22025_000001.T.T02.S2	Pre-B
+22133_000000.T.T02.S2	T

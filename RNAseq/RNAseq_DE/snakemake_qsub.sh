@@ -17,7 +17,7 @@
 #PBS -l walltime=120:00:00
 
 # Go to the directory from where the job was submitted (initial directory is $HOME)
-MY_dir=/home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/gene_expression/runs/initial_run_93_samples/code/ngs_pipeline/RNAseq/RNAseq_DE
+MY_dir=/home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/gene_expression/runs/initial_run_93_samples_2/code/ngs_pipeline/RNAseq/RNAseq_DE
 echo Working directory is $MY_dir
 cd $MY_dir
 
@@ -37,4 +37,5 @@ conda activate /home/people/niktom/.conda/envs/snakemake/
 # Make sure that this script is not bigger than 64kb ~ 150 lines, otherwise put in seperat script and execute from here
 #export SNAKEMAKE_OUTPUT_CACHE=/home/people/niktom/nik_projects/snakemake/test_RNAseq/rna-seq-star-deseq2/resources
 #snakemake --cores 30 --use-conda --cache get_genome get_annotation genome_faidx bwa_index star_index star_genome
-snakemake --cores 38 --use-conda --rerun-incomplete
+#Conda environment is sourced from local conda repository
+snakemake --cores 38 --use-conda --rerun-incomplete --conda-prefix /home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/conda
