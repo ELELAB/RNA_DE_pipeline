@@ -37,6 +37,6 @@ include: "rules/featurecounts.smk"
 rule all:
     input:
         get_final_output(),
-        "../../../../qc/multiqc_report.html",
-        "../../../../results/featurecounts/all.featureCounts",
-        "../../../../results/pca.svg"
+        "../../qc/multiqc_report.html",
+        "../../results/featurecounts/all.featureCounts",
+        "../../results/pca.svg"
