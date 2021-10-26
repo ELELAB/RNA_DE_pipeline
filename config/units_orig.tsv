@@ -1,5 +1,0 @@
-sample_name	unit_name	fq1	fq2	sra	adapters	strandedness
-21370_000000.T.T02.S2	lane1	/home/projects/dtu_00011/data/icope_seq_data/21370/21370_000000.T.T02/21370_000000.T.T02.S2/21370_000000.T.T02.S2.R1.fq.gz	/home/projects/dtu_00011/data/icope_seq_data/21370/21370_000000.T.T02/21370_000000.T.T02.S2/21370_000000.T.T02.S2.R2.fq.gz
-22800_000000.T.T02.S2	lane1	/home/projects/dtu_00011/data/icope_seq_data/22800/22800_000000.T.T02/22800_000000.T.T02.S2/22800_000000.T.T02.S2.R1.fq.gz	/home/projects/dtu_00011/data/icope_seq_data/22800/22800_000000.T.T02/22800_000000.T.T02.S2/22800_000000.T.T02.S2.R2.fq.gz
-23965_000000.T.T02.S2	lane1	/home/projects/dtu_00011/data/icope_seq_data/23965/23965_000000.T.T02/23965_000000.T.T02.S2/23965_000000.T.T02.S2.R1.fq.gz	/home/projects/dtu_00011/data/icope_seq_data/23965/23965_000000.T.T02/23965_000000.T.T02.S2/23965_000000.T.T02.S2.R2.fq.gz
-24214_000000.T.T02.S2	lane1	/home/projects/dtu_00011/data/icope_seq_data/24214/24214_000000.T.T02/24214_000000.T.T02.S2/24214_000000.T.T02.S2.R1.fq.gz	/home/projects/dtu_00011/data/icope_seq_data/24214/24214_000000.T.T02/24214_000000.T.T02.S2/24214_000000.T.T02.S2.R2.fq.gz
