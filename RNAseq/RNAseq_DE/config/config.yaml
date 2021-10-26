@@ -29,9 +29,9 @@ pca:
 diffexp:
   # contrasts for the deseq2 results method
   contrasts:
-    treated-vs-untreated:
-      - treated
-      - untreated
+    Pre-B-vs-T:
+      - Pre-B
+      - T
   model: ~condition
 
 params:

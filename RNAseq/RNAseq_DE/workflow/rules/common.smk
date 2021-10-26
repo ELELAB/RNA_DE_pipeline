@@ -127,7 +127,7 @@ def get_map_reads_input_R2(wildcards):
 
 def get_star_output_all_units(wildcards, fi="counts"):
     if fi == "bam":
-        outfile = "Aligned.out.bam"
+        outfile = "Aligned.out.sorted.bam"
     else:
         outfile = "ReadsPerGene.out.tab"
     res = []
@@ -137,8 +137,8 @@ def get_star_output_all_units(wildcards, fi="counts"):
         else:
             lib = "se"
         res.append(
-            "../../../../results/star/{}/{}-{}/{}".format(
-                lib, unit.sample_name, unit.unit_name, outfile
+            "../../../../results/star/{}/{}-{}/{}_{}".format(
+                lib, unit.sample_name, unit.unit_name, unit.sample_name, outfile
             )
         )
     return res
@@ -149,8 +149,8 @@ def get_star_bam(wildcards):
         lib = "pe"
     else:
         lib = "se"
-    return "../../../../results/star/{}/{}-{}/Aligned.out.bam".format(
-        lib, wildcards.sample, wildcards.unit
+    return "../../../../results/star/{}/{}-{}/{}_Aligned.out.sorted.bam".format(
+        lib, wildcards.sample, wildcards.unit, wildcards.sample
     )
 
 

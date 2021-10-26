@@ -30,6 +30,7 @@ include: "rules/align.smk"
 include: "rules/diffexp.smk"
 include: "rules/featurecounts.smk"
 
+
 ##### target rules #####
 
 
@@ -38,13 +39,4 @@ rule all:
         get_final_output(),
         "../../../../qc/multiqc_report.html",
         "../../../../results/featurecounts/all.featureCounts",
-#        "results/qc/fastqc/A-lane1_fastqc.html",
-#        "results/trimmed/A-lane1_R1.fastq.gz",
-#        "results/pipe/cutadapt/B/lane1.fq1.fastq.gz",
-#        "results/diffexp/contrast.diffexp.tsv",
-#        "results/diffexp/treated-vs-untreated.diffexp.tsv",
-#        "results/counts/all.tsv",
-#        "results/deseq2/all.rds",
-#        "results/qc/multiqc_report.html",
-#        "results/test.txt"
         "../../../../results/pca.svg"
