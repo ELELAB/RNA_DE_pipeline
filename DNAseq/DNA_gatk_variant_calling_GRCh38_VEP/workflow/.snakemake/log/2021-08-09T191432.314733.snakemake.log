@@ -1,4 +1,0 @@
-FileNotFoundError in line 15 of /home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local2/workflow/rules/common.smk:
-[Errno 2] No such file or directory: 'config/config.yaml'
-  File "/home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local2/workflow/Snakefile", line 1, in <module>
-  File "/home/projects/dtu_00011/people/niktom/snakemake/test_gatk_local2/workflow/rules/common.smk", line 15, in <module>
