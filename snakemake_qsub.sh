@@ -10,20 +10,20 @@
 ### Only send mail when job is aborted or terminates abnormally
 #PBS -m n
 ### Number of nodes
-#PBS -l nodes=1:ppn=38
+#PBS -l nodes=1:ppn=38:fatnode
 ### Memory
-#PBS -l mem=150gb
+#PBS -l mem=350gb
 ### Requesting time - format is <days>:<hours>:<minutes>:<seconds> (here, 12 hours)
 #PBS -l walltime=120:00:00
 
 # Go to the directory from where the job was submitted (initial directory is $HOME)
-MY_dir=/home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/gene_expression/runs/initial_run_105_samples/code/ngs_pipeline
+MY_dir=/home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/gene_expression/runs/initial_run_105_samples/code/RNA_DE_pipeline
 echo Working directory is $MY_dir
 cd $MY_dir
 
 ### Here follows the user commands:
 # Define number of processors
-NPROCS=30
+NPROCS=38
 echo This job has allocated $NPROCS nodes
 
 # Load all required modules for the job
