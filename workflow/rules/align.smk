@@ -14,7 +14,7 @@ rule align_pe:
         extra="--sjdbGTFfile {} {}".format(
             "resources/genome.gtf", config["params"]["star"],
         ),
-    threads: 19
+    threads: 6
     conda:
         "../wrappers/executive_wrappers/star/align/environment.yaml"
     script:
