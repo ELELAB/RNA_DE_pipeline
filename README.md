@@ -1,4 +1,4 @@
-# Snakemake workflow: rna-seq-star-deseq2
+# Snakemake workflow: rna-seq-star-deseq2 (based on NCBI & UCSC annotations)
 
 <!-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4737358.svg)](https://doi.org/10.5281/zenodo.4737358)
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.1.0-brightgreen.svg)](https://snakemake.github.io)
