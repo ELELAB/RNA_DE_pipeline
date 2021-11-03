@@ -35,7 +35,7 @@ rule picard_collect_rnaseq_metrics:
     input:
         bam=get_star_bam,
         refflat="resources/genome.refFlat.txt",
-        rib_intervals="resources/gencode.v38.annotation_rRNA.interval_list"
+        rib_intervals="resources/rRNA.interval_list"
     output:
         "../../qc/picard_rnaseq_metrics/{sample}-{unit}.rnaseq_metrics.txt"
     params:

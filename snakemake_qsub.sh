@@ -17,7 +17,7 @@
 #PBS -l walltime=120:00:00
 
 # Go to the directory from where the job was submitted (initial directory is $HOME)
-MY_dir=/home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/gene_expression/runs/initial_run_105_samples/code/RNA_DE_pipeline
+MY_dir=/home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/gene_expression/runs/initial_run_105_samples_refseq/code/RNA_DE_pipeline
 echo Working directory is $MY_dir
 cd $MY_dir
 
