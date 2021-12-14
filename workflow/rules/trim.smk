@@ -36,6 +36,7 @@ rule cutadapt_pe:
         "logs/cutadapt/{sample}_{unit}.log",
     params:
         extra=config["params"]["cutadapt-pe"],
+        adapters="",
     threads: 19
     conda:
         "../wrappers/executive_wrappers/cutadapt/pe/environment.yaml"
