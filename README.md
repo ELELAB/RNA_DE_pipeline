@@ -1,4 +1,6 @@
-# Snakemake workflow: rna-seq-star-deseq2 (based on NCBI & UCSC annotations)
+# Snakemake workflow: rna-seq-star-deseq2 
+
+User has to choose between GENCODE and RefSeq annotations when downloading resources.
 
 <!-- [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4737358.svg)](https://doi.org/10.5281/zenodo.4737358)
 [![Snakemake](https://img.shields.io/badge/snakemake-≥6.1.0-brightgreen.svg)](https://snakemake.github.io)

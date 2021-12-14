@@ -1,14 +1,14 @@
 #!/bin/bash
 
-ln -s /home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/resources_RefSeq ./
+ln -sT /home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/resources_RefSeq ./resources
 
 # ###The following lines create local conda installation of the gsutils package which is needed to download reference resources. 
 #conda init --all
 #conda create --name ref_tools
 #conda activate ref_tools
 #conda install -c conda-forge gsutil
-#conda install -c conda-forge picard
-#conda install -c conda-forge samtools
+#conda install -c conda-forge -c bioconda picard
+#conda install -c conda-forge -c bioconda samtools
 
 
 

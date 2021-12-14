@@ -3,7 +3,7 @@
 ### Account information
 #PBS -W group_list=dtu_00011 -A dtu_00011
 ### Job name (comment out the next line to get the name of the script used as the job name)
-#PBS -N nik_snakemake_rna
+#PBS -N nik_rna_RefSeq
 ### Output files (comment out the next 2 lines to get the job name used instead)
 #PBS -e rnaseq_test.err
 #PBS -o rnaseq_test.log
