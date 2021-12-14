@@ -35,10 +35,8 @@ rule cutadapt_pe:
     log:
         "logs/cutadapt/{sample}_{unit}.log",
     params:
-        others=config["params"]["cutadapt-pe"],
-        adapters=config["params"]["cutadapt-pe"],
-#        adapters=lambda w: str(units.loc[w.sample].loc[w.unit, "adapters"]),
-#        adapters="-a AGAGCACACGTCTGAACTCCAGTCAC -g AGATCGGAAGAGCACACGT -A AGAGCACACGTCTGAACTCCAGTCAC -G AGATCGGAAGAGCACACGT"
+        extra=config["params"]["cutadapt-pe"],
+        adapters="",
     threads: 19
     conda:
         "../wrappers/executive_wrappers/cutadapt/pe/environment.yaml"
@@ -55,7 +53,7 @@ rule cutadapt_se:
     log:
         "logs/cutadapt/{sample}-{unit}.log",
     params:
-        others=config["params"]["cutadapt-se"],
+        extra=config["params"]["cutadapt-se"],
         adapters_r1=lambda w: str(units.loc[w.sample].loc[w.unit, "adapters"]),
     threads: 19
     conda:
