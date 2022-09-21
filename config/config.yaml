@@ -29,13 +29,13 @@ pca:
 diffexp:
   # contrasts for the deseq2 results method
   contrasts:
-    Pre-B-vs-T:
-      - Pre-B
-      - T
+    unknown1-vs-unknown2:
+      - unknown1
+      - unknown2
   model: ~condition
 
 params:
   cutadapt-pe: 
     "--minimum-length 35 -a AGAGCACACGTCTGAACTCCAGTCAC -g AGATCGGAAGAGCACACGT -A AGAGCACACGTCTGAACTCCAGTCAC -G AGATCGGAAGAGCACACGT"
   cutadapt-se: ""
-  star: "--twopassMode Basic --twopass1readsN -1 --sjdbOverhang 149 --sjdbGTFtagExonParentGene gene_name --outSAMtype BAM Unsorted --quantMode GeneCounts --outFilterMultimapNmax 200"
+  star: "--twopassMode Basic --twopass1readsN -1 --sjdbOverhang 149 --sjdbGTFtagExonParentGene gene_name --outSAMtype BAM Unsorted --quantMode GeneCounts --outFilterMultimapNmax 200 --limitSjdbInsertNsj 10000000"

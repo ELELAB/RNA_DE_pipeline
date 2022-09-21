@@ -12,13 +12,13 @@ rule feature_counts:
         "../../results/featurecounts/all.featureCounts.jcounts", 
 
     threads:
-        19
+        38
     params:
         tmp_dir="",   # implicitly sets the --tmpDir flag
         r_path="",    # implicitly sets the --Rpath flag
         extra="-p -t exon -g gene_id -s 2 -B -C --minOverlap 60"
     log:
-        "logs/featurecounts/B.log"
+        "logs/featurecounts/all.log"
 
     conda:
         "../wrappers/executive_wrappers/subread/featurecounts/environment.yaml"

@@ -1,0 +1,1 @@
+snakemake -j 100 --use-conda -s ./workflow/Snakefile --cluster-config ./config/config_pbs.yaml --cluster 'qsub -l walltime={cluster.time} -l mem={cluster.mem} -l nodes=1:ppn={cluster.cpus}:thinnode' --latency-wait 120 --rerun-incomplete

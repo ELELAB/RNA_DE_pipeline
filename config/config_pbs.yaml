@@ -1,0 +1,31 @@
+__default__:
+  partition: "high"
+  cpus: "{threads}"
+  time: 1:00:00
+  mem: "80g"
+  output: "logs_pbs/{rule}.{wildcards}.out"
+
+align_pe:
+  mem: "185g"
+  time: 10:00:00
+cutadapt_pipe:
+  mem: "1g"
+  time: 00:01:00
+cutadapt_pe:
+  mem: "80g"
+  time: 10:00:00
+fastqc_qc:
+  mem: "80g"
+  time: 10:00:00
+fastqc_input:
+  mem: "1g"
+  time: 00:01:00
+feature_counts:
+  mem: "185g"
+  time: 24:00:00
+picard_sort_sam_pe:
+  mem: "185g"
+  time: 24:00:00
+star_index:
+  mem: "185g"
+  time: 24:00:00

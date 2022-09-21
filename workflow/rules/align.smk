@@ -14,7 +14,7 @@ rule align_pe:
         extra="--sjdbGTFfile {} {}".format(
             "resources/genome.gtf", config["params"]["star"],
         ),
-    threads: 6
+    threads: 38
     conda:
         "../wrappers/executive_wrappers/star/align/environment.yaml"
     script:
@@ -32,7 +32,7 @@ rule picard_sort_sam_pe:
     log:
         "logs/picard/sortSam/{sample}-{unit}.log"
     resources:
-        mem_mb=10024
+        mem_mb=70000
     conda:
         "../wrappers/executive_wrappers/picard/sortsam/environment.yaml"
     script:

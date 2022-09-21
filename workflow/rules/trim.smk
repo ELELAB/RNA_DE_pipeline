@@ -19,7 +19,7 @@ rule cutadapt_pipe:
         "logs/pipe-fastqs/catadapt/{sample}-{unit}.{fq}.{ext}.log",
     wildcard_constraints:
         ext=r"fastq|fastq\.gz",
-    threads: 0
+    threads: 1
     shell:
         "ln -s {input} {output} 2> {log}"
 

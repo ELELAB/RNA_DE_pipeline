@@ -3,7 +3,7 @@
 ### Account information
 #PBS -W group_list=dtu_00011 -A dtu_00011
 ### Job name (comment out the next line to get the name of the script used as the job name)
-#PBS -N nik_rna_RefSeq
+#PBS -N 161_rosetta_rna_GENCODE
 ### Output files (comment out the next 2 lines to get the job name used instead)
 #PBS -e rnaseq_test.err
 #PBS -o rnaseq_test.log
@@ -14,23 +14,23 @@
 ### Memory
 #PBS -l mem=350gb
 ### Requesting time - format is <days>:<hours>:<minutes>:<seconds> (here, 12 hours)
-#PBS -l walltime=120:00:00
+#PBS -l walltime=180:00:00
 
 # Go to the directory from where the job was submitted (initial directory is $HOME)
-MY_dir=/home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/gene_expression/runs/initial_run_105_samples_refseq/code/RNA_DE_pipeline
+MY_dir=/home/projects/dtu_00011/data/icope_analysis/others/rna/rnaseq/gene_expression/runs/rosetta_161_samples/code/RNA_DE_pipeline
 echo Working directory is $MY_dir
 cd $MY_dir
 
 ### Here follows the user commands:
 # Define number of processors
 NPROCS=38
-echo This job has allocated $NPROCS nodes
+echo This job has allocated $NPROCS cores
 
 # Load all required modules for the job
 module load tools
-module load miniconda3/4.10.1
+module load miniconda3/4.12.0
 conda init --all
-conda activate /home/people/niktom/.conda/envs/snakemake/
+conda activate /home/people/niktom/.conda/envs/snakemake_6.13.1/
 
 
 # This is where the work is done
@@ -38,4 +38,4 @@ conda activate /home/people/niktom/.conda/envs/snakemake/
 #export SNAKEMAKE_OUTPUT_CACHE=/home/people/niktom/nik_projects/snakemake/test_RNAseq/rna-seq-star-deseq2/resources
 #snakemake --cores 30 --use-conda --cache get_genome get_annotation genome_faidx bwa_index star_index star_genome
 #Conda environment is sourced from local conda repository
-snakemake --cores 38 --use-conda --rerun-incomplete --conda-prefix /home/projects/dtu_00011/data/icope_analysis/ALL/rna/rnaseq/conda
+snakemake --cores 38 --use-conda --rerun-incomplete

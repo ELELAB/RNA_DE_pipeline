@@ -83,7 +83,7 @@ rule fastqc_input:
         "logs/fastqc_input/{sample}-{unit}-{fq}.{ext}.log",
     wildcard_constraints:
         ext=r"fastq|fastq\.gz",
-    threads: 0
+    threads: 1
     shell:
         "ln -s {input} {output} 2> {log}"
 
@@ -341,7 +341,7 @@ rule multiqc:
     log:
         "logs/multiqc.log",
     conda:
-        "../wrappers/executive_wrappers/multiqc/environment.yaml"
+        "../wrappers/executive_wrappers/multiqc/environment_nik.yaml"
     script:
         "../wrappers/executive_wrappers/multiqc/wrapper.py"
 
