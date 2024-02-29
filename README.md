@@ -11,6 +11,9 @@ https://github.com/snakemake-workflows/rna-seq-star-deseq2
 This workflow performs a differential gene expression analysis using Cutadapt, STAR and Deseq2. Alternatively, genes (or other features) are counted also using FeatureCounts. 
 Report.html file offers an interactive workflow diagram in the form of Direct Acyclic Graph (DAG); clicking on the node will display code for each step (code visualization might not work well for robust workflows). Report include also run time statistics, some details about pipeline configuration (from confing.yaml) and selected results (PCA, DEG graphs). Example MultiQC output is represented by multiqc_report.html
 
+Data-driven discovery of gene expression markers distinguishing pediatric acute lymphoblastic leukemia subtypes. Mona Nourbakhsh, Nikola Tom, Anna Schroeder Lassen, Helene Brasch Lind Petersen, Ulrik Kristoffer Stoltze, Karin Wadt, Kjeld Schmiegelow, Matteo Tiberti, Elena Papaleo. bioRxiv 2024.02.26.582026; doi: https://doi.org/10.1101/2024.02.26.582026
+
+Please cite the paper above if you use the scripts for your own research.
 
 ## Usage
 
